@@ -8,10 +8,10 @@ import csv
 csvpath = os.path.join('budget_data.csv')
 
 # initializing the variables
-total_months = 0
-total_revenue = 0
+allMonths = 0
+totalRevenue = 0
 changes = []
-date_count = []
+dateCount = []
 greatest_inc = 0
 greatest_inc_month = 0
 greatest_dec = 0
@@ -24,21 +24,21 @@ with open(csvpath, newline='') as csvfile:
     row = next(csvreader)
     # calculating the total number of months and total revenue
     previous_profit = int(row[1])
-    total_months = total_months + 1
-    total_revenue = total_revenue + int(row[1])
+    allMonths = allMonths + 1
+    totalRevenue = totalRevenue + int(row[1])
     greatest_inc = int(row[1])
     greatest_inc_month = row[0]
 
     for row in csvreader:
 
-        total_months = total_months + 1
-        total_revenue = total_revenue + int(row[1])
+        allMonths = allMonths + 1
+        totalRevenue = totalRevenue + int(row[1])
 
         # Calculate change from this month to previous months
         change = int(row[1]) - previous_profit
         changes.append(change)
         previous_profit = int(row[1])
-        date_count.append(row[0])
+        dateCount.append(row[0])
 
         # calculating the greatest increase
         if int(row[1]) > greatest_inc:
@@ -58,8 +58,8 @@ with open(csvpath, newline='') as csvfile:
 
     # printing all values
     print("Financial Analysis")
-    print("Total Months:" + str(total_months))
-    print("Total Amount:" + str(total_revenue))
+    print("Total Months:" + str(allMonths))
+    print("Total Amount:" + str(totalRevenue))
     print(average_change)
     print(greatest_inc_month, max(changes))
     print(greatest_dec_month, min(changes))
@@ -67,8 +67,8 @@ with open(csvpath, newline='') as csvfile:
 # writing output files
 PyBank = open("output.txt", "w+")
 PyBank.write("Financial Analysis")
-PyBank.write('\n' + "Total Months" + str(total_months))
-PyBank.write('\n' + "Total Amount" + str(total_revenue))
+PyBank.write('\n' + "Total Months" + str(allMonths))
+PyBank.write('\n' + "Total Amount" + str(totalRevenue))
 PyBank.write('\n' + "Average" + str(average_change))
 PyBank.write('\n' + greatest_inc_month)
 PyBank.write('\n' + str(high))
