@@ -19,9 +19,9 @@ greatest_dec_month = 0
 
 # Open the CSV
 with open(csvpath, newline='') as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=',')
-    next(csvreader, None)
-    row = next(csvreader)
+    data = csv.reader(csvfile, delimiter=',')
+    next(data, None)
+    row = next(data)
     # calculating the total number of months and total revenue
     previous_profit = int(row[1])
     allMonths = allMonths + 1
@@ -29,7 +29,7 @@ with open(csvpath, newline='') as csvfile:
     greatest_inc = int(row[1])
     greatest_inc_month = row[0]
 
-    for row in csvreader:
+    for row in data:
 
         allMonths = allMonths + 1
         totalRevenue = totalRevenue + int(row[1])

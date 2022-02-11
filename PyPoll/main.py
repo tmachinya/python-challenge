@@ -8,10 +8,10 @@ csvpath = os.path.join('election_data.csv')
 pollData = {}
 allVotes = 0
 with open(csvpath, 'r') as csvfile:
-    csvread = csv.reader(csvfile)
-    next(csvread, None)
+    data = csv.reader(csvfile)
+    next(data, None)
 
-    for row in csvread:
+    for row in data:
         allVotes += 1
         if row[2] in pollData.keys():
             pollData[row[2]] = pollData[row[2]] + 1
