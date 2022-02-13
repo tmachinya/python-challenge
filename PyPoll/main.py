@@ -28,7 +28,7 @@ for key, value in pollData.items():
 # Percentage of votes
 percentage_votes = []
 for n in totalVotes:
-    percentage_votes.append(round(n / allVotes * 100, 1))
+    percentage_votes.append(n / allVotes * 100)
 
 # Finding the winner
 clean_data = list(zip(candidates, totalVotes, percentage_votes))
@@ -41,24 +41,33 @@ winner = winner_list[0]
 
 # Print all data
 print("Election results :")
-print(allVotes)
-print(candidates)
-print(percentage_votes)
-print(totalVotes)
-print(winner)
+print("---------------------")
+print("Total Votes: " + str(allVotes))
+print("---------------------")
+print(str(candidates[0]) + ": " + str(round((percentage_votes[0]), 3)) + "00% " + " (" + str(totalVotes[0]) + ")")
+print(str(candidates[1]) + ": " + str(round((percentage_votes[1]), 3)) + "00% " + " (" + str(totalVotes[1]) + ")")
+print(str(candidates[2]) + ": " + str(round((percentage_votes[2]), 3)) + "00% " + " (" + str(totalVotes[2]) + ")")
+print(str(candidates[3]) + ": " + str(round((percentage_votes[3]), 3)) + "00% " + " (" + str(totalVotes[3]) + ")")
+# print(candidates)
+# print(percentage_votes)
+# print(totalVotes)
+print("---------------------")
+print("Winner: " + str(winner))
+print("---------------------")
 
-# Writng output files
+# Writing output files
+
 PyPoll = open("output.txt", "w+")
-PyPoll.write("Election Results")
-PyPoll.write('\n' + "allVotes" + str(allVotes))
-PyPoll.write('\n' + str(candidates))
-PyPoll.write('\n' + str(percentage_votes))
-PyPoll.write('\n' + str(totalVotes))
-PyPoll.write('\n' + "Winner:" + winner)
-
-
-
-
-
-
-
+PyPoll.write("Election Results: ")
+PyPoll.write('\n' + "Total Votes: " + str(allVotes))
+PyPoll.write('\n' + str(
+    str(candidates[0]) + ": " + str(round((percentage_votes[0]), 3)) + "00% " + " (" + str(totalVotes[0]) + ")"))
+PyPoll.write('\n' + str(
+    str(candidates[1]) + ": " + str(round((percentage_votes[1]), 3)) + "00% " + " (" + str(totalVotes[1]) + ")"))
+PyPoll.write('\n' + str(
+    str(candidates[2]) + ": " + str(round((percentage_votes[2]), 3)) + "00% " + " (" + str(totalVotes[2]) + ")"))
+PyPoll.write('\n' + str(
+    str(candidates[3]) + ": " + str(round((percentage_votes[3]), 3)) + "00% " + " (" + str(totalVotes[3]) + ")"))
+# PyPoll.write('\n' + str(percentage_votes))
+# PyPoll.write('\n' + str(totalVotes))
+PyPoll.write('\n' + "Winner: " + winner)
