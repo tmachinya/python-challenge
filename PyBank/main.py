@@ -60,9 +60,9 @@ with open(csvpath, newline='') as csvfile:
     print("Financial Analysis")
     print("Total Months:" + str(allMonths))
     print("Total Amount:" + str(totalRevenue))
-    print(average_change)
-    print(greatest_inc_month, max(changes))
-    print(greatest_dec_month, min(changes))
+    print("Average  Change:" + str(round(average_change, 2)))
+    print("Greatest Increase in Profits:" + greatest_inc_month, "($" + str(max(changes)) + ")")
+    print("Greatest Decrease in Profits:" + greatest_dec_month, "($" + str(min(changes)) + ")")
 
 # writing output files
 PyBank = open("output.txt", "w+")
